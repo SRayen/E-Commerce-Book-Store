@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 const categorySchema = new Schema({
   name: {
     type: String,
     required: true,
     trim: true,
-    maxLengh: 32,
+    maxLength: 32,
     unique: true,
   },
   slug: {

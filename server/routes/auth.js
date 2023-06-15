@@ -1,12 +1,13 @@
 import express from "express";
-import { register , login , secret } from "../controllers/auth.js";
-import { isAdmin, requireSignin } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/register", register );
-router.post("/login", login );
+import { register, login, secret } from "../controllers/auth.js";
+import { isAdmin, requireSignin } from "../middlewares/auth.js";
 
-router.get('/secret', requireSignin, isAdmin , secret)
+router.post("/register", register);
+router.post("/login", login);
+
+router.get("/secret", requireSignin, isAdmin, secret);
 
 export default router;

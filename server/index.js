@@ -3,7 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
-import { comparePassword, hashPassword } from "./helpers/auth.js";
+import categoryRoutes from "./routes/category.js";
 import morgan from "morgan";
 
 dotenv.config();
@@ -16,11 +16,14 @@ mongoose
   .catch((err) => console.log("DB error=>", err));
 
 //middlewares
+app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(express.json())
 
 //Router middleware
 app.use("/api", authRoutes);
+app.use("/api", categoryRoutes);
+
 
 const port = process.env.PORT || 5000;
 
