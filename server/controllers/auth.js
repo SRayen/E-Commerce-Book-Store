@@ -71,7 +71,7 @@ export const login = async (req, res) => {
       expiresIn: "1d",
     });
 
-    res.json({
+    res.status(200).json({
       user: {
         name: user.name,
         email: user.email,
@@ -84,3 +84,7 @@ export const login = async (req, res) => {
     console.log(error);
   }
 };
+
+export const secret = async (req,res)=>{
+  res.json({curerntUser: req.user})
+}
