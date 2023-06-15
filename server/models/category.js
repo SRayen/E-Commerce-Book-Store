@@ -1,18 +1,17 @@
 import mongoose from "mongoose";
-const { Schema } = mongoose;
 
-const categorySchema = new Schema({
+const categorySchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
     trim: true,
+    required: true,
     maxLength: 32,
     unique: true,
   },
   slug: {
     type: String,
-    lowercase: true,
     unique: true,
+    lowercase: true,
   },
 });
 
