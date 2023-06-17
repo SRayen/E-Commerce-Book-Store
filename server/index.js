@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.js";
 import categoryRoutes from "./routes/category.js";
 import productRoutes from "./routes/product.js";
 import morgan from "morgan";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -17,15 +18,15 @@ mongoose
   .catch((err) => console.log("DB error=>", err));
 
 //middlewares
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
-app.use(express.json())
+app.use(express.json());
 
 //Router middleware
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
-
 
 const port = process.env.PORT || 5000;
 
