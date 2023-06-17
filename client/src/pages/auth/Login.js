@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState  } from "react";
 import Jumbotron from "../../components/cards/Jumbotron";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -17,10 +17,11 @@ const Login = () => {
         email,
         password,
       });
-      console.log("data=", data);
+     
       if (data?.error) {
         toast.error(data.error);
       } else {
+        localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successful");
       }
