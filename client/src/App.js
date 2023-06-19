@@ -7,6 +7,15 @@ import { Toaster } from "react-hot-toast";
 import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./components/routes/PrivateRoute";
 
+const PageNotFound = () => {
+  return (
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      {" "}
+      404 | Page not found
+    </div>
+  );
+};
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +28,7 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="" element={<Dashboard />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} replace />
       </Routes>
     </BrowserRouter>
   );
