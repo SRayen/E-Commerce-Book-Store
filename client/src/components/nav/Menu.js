@@ -20,6 +20,7 @@ const Menu = () => {
             HOME
           </NavLink>
         </li>
+
         {!auth?.user ? (
           <>
             <li className="nav-item">
@@ -34,11 +35,34 @@ const Menu = () => {
             </li>
           </>
         ) : (
-          <li className="nav-item pointer">
-            <a className="nav-link" onClick={logout}>
-              LOGOUT
-            </a>
-          </li>
+          <div className="dropdown">
+            <li>
+              <a
+                className="nav-link pointer dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                {auth?.user?.name}
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    to={`/dashboard/${
+                      auth?.user?.role === 1 ? "admin" : "user"
+                    }`}
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+
+                <li className="nav-item pointer">
+                  <a className="nav-link" onClick={logout}>
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </div>
         )}
       </ul>
     </>
