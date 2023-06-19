@@ -4,24 +4,24 @@ import { useAuth } from "../../context/auth";
 import Loading from "./Loading";
 import axios from "axios";
 
-const PrivateRoute = () => {
+const AdminRoute = () => {
   const [auth, setAuth] = useAuth();
   //state
   const [ok, setOk] = useState();
 
   useEffect(() => {
-    const authCheck = async () => {
-      const { data } = await axios.get(`/auth-check`);
+    const adminCheck = async () => {
+      const { data } = await axios.get(`/admin-check`);
       if (data.ok) {
         setOk(true);
       } else {
         setOk(false);
       }
     };
-    if (auth?.token) authCheck();
+    if (auth?.token) adminCheck();
   }, [auth?.token]);
-{/* <Loading path="user" /> ==> case: user not logged in */}
-  return ok ? <Outlet /> : <Loading path="user" />;
+  //   path=""===> Home page  //    <Loading path="" /> ==> case user in not admin
+  return ok ? <Outlet /> : <Loading path="" />;
 };
 
-export default PrivateRoute;
+export default AdminRoute;

@@ -28,7 +28,10 @@ const Login = () => {
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successful");
         //state:used in taking user to intended page after login !
-        navigate(location.state || "/dashboard");
+        navigate(
+          location.state ||
+            `/dashboard/${data?.user?.role === 1 ? "admin" : "user"}`
+        );
       }
     } catch (error) {
       console.log(error);
