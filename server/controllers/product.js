@@ -10,7 +10,6 @@ export const create = async (req, res) => {
       req.fields;
     const { photo } = req.files;
     //Validation :
-    // validation
     switch (true) {
       case !name.trim():
         return res.json({ error: "Name is required" });

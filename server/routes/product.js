@@ -1,4 +1,6 @@
 import express from "express";
+/* Formidable is a Node.js module for parsing form data, including 
+multipart/form-data file upload. */
 import formidable from "express-formidable";
 
 const router = express.Router();
