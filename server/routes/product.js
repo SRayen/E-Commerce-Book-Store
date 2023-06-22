@@ -16,7 +16,7 @@ import {
 } from "../controllers/product.js";
 //formidable() middleware ==> to receive form data (and receive file (img) data)
 router.post("/product", requireSignin, isAdmin, formidable(), create);
-router.get("/product", list);
+router.get("/products", list);
 router.get("/product/:slug", read);
 router.get("/product/photo/:productId", photo);
 router.delete("/product/:productId", requireSignin, isAdmin, remove);
