@@ -168,7 +168,7 @@ const AdminProduct = () => {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
-            <button className="ben btn-primary mb-5" onClick={handleSubmit}>
+            <button className="btn btn-primary mb-5" onClick={handleSubmit}>
               Submit
             </button>
           </div>
