@@ -14,6 +14,8 @@ import {
   remove,
   update,
   filteredProducts,
+  productsCount,
+  listProducts
 } from "../controllers/product.js";
 //formidable() middleware ==> to receive form data (and receive file (img) data)
 router.post("/product", requireSignin, isAdmin, formidable(), create);
@@ -23,5 +25,7 @@ router.get("/product/photo/:productId", photo);
 router.delete("/product/:productId", requireSignin, isAdmin, remove);
 router.put("/product/:productId", requireSignin, isAdmin, formidable(), update);
 router.post("/filtered-products", filteredProducts);
+router.get("/products-count", productsCount);
+router.get("/list-products/:page", listProducts);
 
 export default router;

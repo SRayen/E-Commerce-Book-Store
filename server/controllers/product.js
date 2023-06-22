@@ -156,8 +156,33 @@ export const filteredProducts = async (req, res) => {
     if (radio.length > 0) args.price = { $gte: radio[0], $lte: radio[1] };
     console.log("args=>", args);
     const products = await Product.find(args);
-    console.log("rayyyyyyyyyy==>", products.length);
     res.json(products);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Products Count
+export const productsCount = async (req, res) => {
+  try {
+    const total = await Product.find({}).estimatedDocumentCount();
+    res.json(total);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//List Products
+export const listProducts = async (req, res) => {
+  try {
+    const perPage = 3;
+    const page = req.params.page ? req.params.page : 1;
+    const products = await Product.find({})
+      .select("-photo")
+      .skip((page - 1) * perPage)
+      .limit(perPage)
+      .sort({ createdAt: -1 });
+       res.json(products);
   } catch (error) {
     console.log(error);
   }
