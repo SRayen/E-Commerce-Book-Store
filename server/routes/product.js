@@ -13,6 +13,7 @@ import {
   photo,
   remove,
   update,
+  filteredProducts,
 } from "../controllers/product.js";
 //formidable() middleware ==> to receive form data (and receive file (img) data)
 router.post("/product", requireSignin, isAdmin, formidable(), create);
@@ -21,5 +22,6 @@ router.get("/product/:slug", read);
 router.get("/product/photo/:productId", photo);
 router.delete("/product/:productId", requireSignin, isAdmin, remove);
 router.put("/product/:productId", requireSignin, isAdmin, formidable(), update);
+router.post("/filtered-products", filteredProducts);
 
 export default router;

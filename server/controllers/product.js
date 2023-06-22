@@ -144,3 +144,21 @@ export const update = async (req, res) => {
     return res.status(400).json(error.message);
   }
 };
+
+//Filtered Products
+export const filteredProducts = async (req, res) => {
+  try {
+    const { checked, radio } = req.body;
+    let args = {};
+    if (checked.length > 0) args.category = checked;
+    //$gte : greater than or equal to   //$lte : less than or equal to
+    //{ $gte: radio[0], $lte: radios[1] } : remember: array: [60, 79] exp radio[0]:60 & radios[1]:79
+    if (radio.length > 0) args.price = { $gte: radio[0], $lte: radio[1] };
+    console.log("args=>", args);
+    const products = await Product.find(args);
+    console.log("rayyyyyyyyyy==>", products.length);
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+  }
+};
