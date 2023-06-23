@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [values, setValues] = useSearch();
-const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(`/products/search/${values?.keyword}`);
       setValues({ ...values, results: data });
-      navigate('/search')
+      navigate("/search");
     } catch (error) {
       console.log(error);
     }
