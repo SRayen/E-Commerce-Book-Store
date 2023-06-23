@@ -175,14 +175,31 @@ export const productsCount = async (req, res) => {
 //List Products
 export const listProducts = async (req, res) => {
   try {
-    const perPage = 3;
+    const perPage = 4;
     const page = req.params.page ? req.params.page : 1;
     const products = await Product.find({})
       .select("-photo")
       .skip((page - 1) * perPage)
       .limit(perPage)
       .sort({ createdAt: -1 });
-       res.json(products);
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Product Search By Keyword
+export const productsSearch = async (req, res) => {
+  try {
+    const { keyword } = req.params;
+    // 'i':  is provided to make the matching case-insensitive
+    const results = await Product.find({
+      $or: [
+        { name: { $regex: keyword, $options: "i" } },
+        { description: { $regex: keyword, $options: "i" } },
+      ],
+    }).select('-photo')
+    res.json(results)
   } catch (error) {
     console.log(error);
   }
