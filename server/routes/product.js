@@ -17,6 +17,7 @@ import {
   productsCount,
   listProducts,
   productsSearch,
+  relatedProducts
 } from "../controllers/product.js";
 //formidable() middleware ==> to receive form data (and receive file (img) data)
 router.post("/product", requireSignin, isAdmin, formidable(), create);
@@ -29,5 +30,6 @@ router.post("/filtered-products", filteredProducts);
 router.get("/products-count", productsCount);
 router.get("/list-products/:page", listProducts);
 router.get("/products/search/:keyword", productsSearch);
+router.get("/related-products/:productId/:categoryId", relatedProducts);
 
 export default router;

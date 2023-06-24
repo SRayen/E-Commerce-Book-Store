@@ -198,8 +198,25 @@ export const productsSearch = async (req, res) => {
         { name: { $regex: keyword, $options: "i" } },
         { description: { $regex: keyword, $options: "i" } },
       ],
-    }).select('-photo')
-    res.json(results)
+    }).select("-photo");
+    res.json(results);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Related Products
+export const relatedProducts = async (req, res) => {
+  try {
+    const { productId, categoryId } = req.params;
+    const related = await Product.find({
+      category: categoryId,
+      _id: { $ne: productId },  // $ne : not equal
+    })
+      .select("-photo")
+      .populate("category")
+      .limit(3);
+    res.json(related);
   } catch (error) {
     console.log(error);
   }

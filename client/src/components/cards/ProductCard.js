@@ -1,8 +1,10 @@
 import React from "react";
 import moment from "moment";
 import { Badge } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ p }) => {
+  const navigate = useNavigate();
   return (
     <div className="card mb-3 hoverable">
       <Badge.Ribbon text={`${p?.sold} sold`} color="volcano">
@@ -13,7 +15,7 @@ const ProductCard = ({ p }) => {
               : "Out of stock"
           }`}
           placement="start"
-          color={`${p?.quantity===0 ? 'red' : 'green'}`}
+          color={`${p?.quantity === 0 ? "red" : "green"}`}
         >
           <img
             className="card-img-top"
@@ -26,16 +28,19 @@ const ProductCard = ({ p }) => {
 
       <div className="card-body">
         <h5>{p?.name}</h5>
-        <div className="fw-bold">{p?.price?.toLocaleString('en-US',{
-            style:'currency',
-            currency:'USD'
-        })}</div>
+        <div className="fw-bold">
+          {p?.price?.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
+        </div>
         <h5>{p?.description?.substring(0, 60)}...</h5>
       </div>
       <div className="d-flex justify-content-between">
         <button
           className="btn btn-primary col card-button"
           style={{ borderBottomLeftRadius: "5px" }}
+          onClick={() => navigate(`/product/${p.slug}`)}
         >
           View Product
         </button>
