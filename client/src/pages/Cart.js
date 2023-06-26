@@ -137,7 +137,11 @@ const Cart = () => {
                   </div>
                   <button
                     className="btn btn-warning"
-                    onClick={() => navigate("/dashboard/user/profile")}
+                    onClick={() =>
+                      navigate("/dashboard/user/profile", {
+                        state: "/cart",
+                      })
+                    }
                   >
                     Update address
                   </button>
@@ -147,7 +151,11 @@ const Cart = () => {
                   {auth?.token ? (
                     <button
                       className="btn btn-outline-warning"
-                      onClick={() => navigate("/dashboard/user/profile")}
+                      onClick={() =>
+                        navigate("/dashboard/user/profile", {
+                          state: "/cart",
+                        })
+                      }
                     >
                       Add delivery address
                     </button>

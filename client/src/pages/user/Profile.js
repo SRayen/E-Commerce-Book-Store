@@ -4,6 +4,7 @@ import Jumbotron from "../../components/cards/Jumbotron";
 import UserMenu from "../../components/nav/UserMenu";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const UserProfile = () => {
   const [auth, setAuth] = useAuth();
@@ -12,6 +13,9 @@ const UserProfile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (auth?.user) {
@@ -45,6 +49,7 @@ const UserProfile = () => {
         ls.user = data;
         localStorage.setItem("auth", JSON.stringify(ls));
         toast.success("Profile udpated");
+        location.state && navigate(location.state);
       }
     } catch (error) {
       console.log(error);
