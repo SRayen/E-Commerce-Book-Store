@@ -14,11 +14,14 @@ import {
 } from "react-icons/fa";
 import moment from "moment";
 import ProductCard from "../components/cards/ProductCard";
+import { toast } from "react-hot-toast";
+import { useCart } from "../context/cart";
 
 const ProductView = () => {
   const [product, setProduct] = useState({});
   const [related, setRelated] = useState([]);
   const params = useParams();
+  const [cart, setCart] = useCart();
 
   useEffect(() => {
     if (params?.slug) loadProduct();
@@ -108,6 +111,10 @@ const ProductView = () => {
             <button
               className="btn btn-outline-primary col card-button"
               style={{ borderBottomRightRadius: "5px" }}
+              onClick={() => {
+                setCart([...cart, product]);
+                toast.success("Added to cart");
+              }}
             >
               Add to cart
             </button>

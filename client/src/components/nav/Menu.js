@@ -1,13 +1,16 @@
 import React from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import Search from "../forms/Search";
 import useCategory from "../../hooks/useCategory";
+import { useCart } from "../../context/cart";
+import { Badge } from "antd";
 
 const Menu = () => {
   const navigate = useNavigate();
   //context
   const [auth, setAuth] = useAuth();
+  const [cart, setCart] = useCart();
   //hooks
   const categories = useCategory();
 
@@ -16,10 +19,9 @@ const Menu = () => {
     localStorage.removeItem("auth");
     navigate("/login");
   };
-  console.log(categories);
   return (
     <>
-      <ul className="nav d-flex justify-content-between shadow-sm mb-2">
+      <ul className="nav d-flex justify-content-between shadow-sm mb-2 sticky-top bg-light">
         <li className="nav-item">
           <NavLink className="nav-link " aria-current="page" to="/">
             HOME
@@ -38,15 +40,15 @@ const Menu = () => {
               className="nav-link pointer dropdown-toggle"
               data-bs-toggle="dropdown"
             >
-              Categories
+              CATEGORIES
             </a>
             <ul
               className="dropdown-menu"
               style={{ height: "300px", overflow: "scroll" }}
             >
               <li>
-                <NavLink className="nav-link" to='/categories'>
-                 All Categories
+                <NavLink className="nav-link" to="/categories">
+                  All categories
                 </NavLink>
               </li>
               {categories?.map((c) => (
@@ -59,6 +61,14 @@ const Menu = () => {
             </ul>
           </li>
         </div>
+
+        <li className="nav-item mt-1">
+          <Badge count={cart?.length || 0} offset={[-1, 11]} showZero>
+            <NavLink className="nav-link " aria-current="page" to="/cart">
+              CART
+            </NavLink>
+          </Badge>
+        </li>
 
         <Search />
 
@@ -82,7 +92,7 @@ const Menu = () => {
                 className="nav-link pointer dropdown-toggle"
                 data-bs-toggle="dropdown"
               >
-                {auth?.user?.name}
+                {auth?.user?.name?.toUpperCase()}
               </a>
               <ul className="dropdown-menu">
                 <li>

@@ -14,6 +14,7 @@ const CategoryView = () => {
   useEffect(() => {
     if (params?.slug) loadProductsByCategory();
   }, [params?.slug]);
+  
   const loadProductsByCategory = async () => {
     const { data } = await axios.get(`/products-by-category/${params.slug}`);
     setCategory(data.category);

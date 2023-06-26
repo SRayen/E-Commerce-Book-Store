@@ -2,15 +2,22 @@ import React from "react";
 import moment from "moment";
 import { Badge } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/cart";
+import { toast } from "react-hot-toast";
 
 const ProductCard = ({ p }) => {
+
+  //context
+  const [cart, setCart] = useCart();
   const navigate = useNavigate();
+  //save actual cart in local storage 
+  localStorage.setItem('cart',JSON.stringify(cart))
   return (
-    <div className="card mb-3 hoverable">
+    <div className="card mb-3 hoverable card-perso" >
       <Badge.Ribbon text={`${p?.sold} sold`} color="volcano">
         <Badge.Ribbon
           text={`${
-            p?.quantity >= 1
+            p?.quantity >0
               ? `${p?.quantity - p?.sold} in stock`
               : "Out of stock"
           }`}
@@ -18,15 +25,15 @@ const ProductCard = ({ p }) => {
           color={`${p?.quantity === 0 ? "red" : "green"}`}
         >
           <img
-            className="card-img-top"
+            className="card-img-top "
             src={`${process.env.REACT_APP_API}/product/photo/${p._id}`}
             alt={p.name}
-            style={{ height: "300px", objectFit: "cover" }}
+            style={{ height: "300px"}}
           />
         </Badge.Ribbon>
       </Badge.Ribbon>
 
-      <div className="card-body">
+      <div className="card-body card-perso-body ">
         <h5>{p?.name}</h5>
         <div className="fw-bold">
           {p?.price?.toLocaleString("en-US", {
@@ -47,6 +54,11 @@ const ProductCard = ({ p }) => {
         <button
           className="btn btn-outline-primary col card-button"
           style={{ borderBottomRightRadius: "5px" }}
+          onClick={() => {
+            setCart([...cart, p]);
+           
+            toast.success("Added to cart");
+          }}
         >
           Add to cart
         </button>
