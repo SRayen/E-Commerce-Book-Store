@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import Loading from "./Loading";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const AdminRoute = () => {
   const [auth, setAuth] = useAuth();
@@ -11,11 +12,15 @@ const AdminRoute = () => {
 
   useEffect(() => {
     const adminCheck = async () => {
-      const { data } = await axios.get(`/admin-check`);
-      if (data.ok) {
-        setOk(true);
-      } else {
-        setOk(false);
+      try {
+        const { data } = await axios.get(`/admin-check`);
+        if (data.ok) {
+          setOk(true);
+        } else {
+          setOk(false);
+        }
+      } catch (error) {
+        console.log(error)
       }
     };
     if (auth?.token) adminCheck();
