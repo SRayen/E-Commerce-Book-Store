@@ -297,8 +297,21 @@ const decrementQuantity = async (cart) => {
         },
       };
     });
-    const updated=await Product.bulkWrite(bulkOps,{})
-    console.log( 'updated blk=>',updated)
+    const updated = await Product.bulkWrite(bulkOps, {});
+    console.log("updated blk=>", updated);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Order Status
+export const orderStatus = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+    const { status } = req.body;
+
+    const order = await Order.findByIdAndUpdate(orderId, { status });
+    res.json(order);
   } catch (error) {
     console.log(error);
   }
