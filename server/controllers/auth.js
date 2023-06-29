@@ -1,4 +1,5 @@
 import { comparePassword, hashPassword } from "../helpers/auth.js";
+import Order from "../models/order.js";
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 
@@ -111,7 +112,33 @@ export const updateProfile = async (req, res) => {
       { new: true }
     );
     //Prevent sending password
-    updated.password=undefined
-    res.json(updated)
-  } catch (error) {console.log(error)}
+    updated.password = undefined;
+    res.json(updated);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({ buyer: req.user._id })
+      .populate("products", "-photo") // Populating the "products" field of orders, excluding the "photo" field
+      .populate("buyer", "name"); // Populating the "buyer" field of orders, including only the "name" field
+
+    res.json(orders);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const allOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({})
+      .populate("products", "-photo") // Populating the "products" field of orders, excluding the "photo" field
+      .populate("buyer", "name") // Populating the "buyer" field of orders, including only the "name" field
+      .sort({ createdAt: "-1" });
+    res.json(orders);
+  } catch (err) {
+    console.log(err);
+  }
 };

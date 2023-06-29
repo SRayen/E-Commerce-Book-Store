@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { useCart } from "../../context/cart";
 
-const ProductCardHorizontal = ({ p}) => {
+const ProductCardHorizontal = ({ p, remove = true }) => {
   const [cart, setCart] = useCart();
 
   const removeFromCart = (productId) => {
@@ -16,7 +16,7 @@ const ProductCardHorizontal = ({ p}) => {
   return (
     <div
       className="card mb-3"
-      style={{ maxWidth: 540, backgroundColor: "#CFF4D2" }}
+      style={{ width: "100%", backgroundColor: "#CFF4D2" }}
     >
       <div className="row g-0">
         <div className="col-md-4">
@@ -52,12 +52,14 @@ const ProductCardHorizontal = ({ p}) => {
               Listed {moment(p.createdAt).fromNow()}
             </small>
           </p>
-          <p
-            className="btn btn-sm btn-outline-danger mb-2"
-            onClick={() => removeFromCart(p._id)}
-          >
-            Remove
-          </p>
+          {remove && (
+            <p
+              className="btn btn-sm btn-outline-danger mb-2"
+              onClick={() => removeFromCart(p._id)}
+            >
+              Remove
+            </p>
+          )}
         </div>
       </div>
     </div>

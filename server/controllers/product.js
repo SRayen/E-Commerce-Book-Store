@@ -274,12 +274,31 @@ export const processPayment = async (req, res) => {
             payment: result,
             buyer: req.user._id,
           }).save();
+          //decrement Quantity
+          decrementQuantity(cart);
           res.json({ ok: true });
         } else {
           res.status(500).send(error);
         }
       }
     );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const decrementQuantity = async (cart) => {
+  try {
+    const bulkOps = cart.map((item) => {
+      return {
+        updateOne: {
+          filter: { _id: item._id },
+          update: { $inc: { quantity: -0, sold: +1 } },
+        },
+      };
+    });
+    const updated=await Product.bulkWrite(bulkOps,{})
+    console.log( 'updated blk=>',updated)
   } catch (error) {
     console.log(error);
   }
