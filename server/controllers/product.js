@@ -320,8 +320,6 @@ export const orderStatus = async (req, res) => {
     console.log("===>", order);
 
     //Send Email
-
-    //Reset Email
     const message = `
 <h2>Hello ${order.buyer.name}</h2>
 <p>Your order's status is: <span style='color:red'>${order.status}</span> </p>
@@ -336,7 +334,7 @@ export const orderStatus = async (req, res) => {
 
     try {
       await sendEmail(subject, message, send_to, send_from);
-      res.status(200).json({ success: true, message: "Email Sent" });
+      res.status(200).json({ success: true, message: "Email Sent", user: order.buyer.name});
     } catch (error) {
       res.status(500);
       // throw new Error("Email not sent, please try again",error);

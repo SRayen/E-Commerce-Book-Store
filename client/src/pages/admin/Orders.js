@@ -6,6 +6,7 @@ import moment from "moment";
 import ProductCardHorizontal from "../../components/cards/ProductCardHorizontal";
 import AdminMenu from "../../components/nav/AdminMenu";
 import { Select } from "antd";
+import { toast } from "react-hot-toast";
 
 const AdminOrders = () => {
   const [auth, setAuth] = useAuth();
@@ -40,6 +41,10 @@ const AdminOrders = () => {
       const { data } = await axios.put(`/order-status/${orderId}`, {
         status: value,
       });
+      toast.success(
+        `Email has been successfully sent to the user ${data.user}`
+      );
+
       getOrders();
     } catch (error) {}
   };
