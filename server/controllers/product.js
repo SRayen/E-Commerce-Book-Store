@@ -4,6 +4,7 @@ import fs from "fs";
 import braintree from "braintree";
 import dotenv from "dotenv";
 import Order from "../models/order.js";
+import sendEmail from "../utils/sendEmail.js";
 
 dotenv.config();
 
@@ -310,7 +311,38 @@ export const orderStatus = async (req, res) => {
     const { orderId } = req.params;
     const { status } = req.body;
 
-    const order = await Order.findByIdAndUpdate(orderId, { status });
+    const order = await Order.findByIdAndUpdate(
+      orderId,
+      { status },
+      { new: true }  //To return updated data
+    ).populate("buyer", "email name");
+
+    console.log("===>", order);
+
+    //Send Email
+
+    //Reset Email
+    const message = `
+<h2>Hello ${order.buyer.name}</h2>
+<p>Your order's status is: <span style='color:red'>${order.status}</span> </p>
+<p>Visit <a href=${process.env.FRONTEND_URL}/dashboard/user/orders>your dashboard</a> for more details </p>
+<p>Regards ...</p>
+<p>***RAYEN DEV COMMUNITY***</p>
+`;
+
+    const subject = "Order status";
+    const send_to = order.buyer.email;
+    const send_from = process.env.EMAIL_USER;
+
+    try {
+      await sendEmail(subject, message, send_to, send_from);
+      res.status(200).json({ success: true, message: "Email Sent" });
+    } catch (error) {
+      res.status(500);
+      // throw new Error("Email not sent, please try again",error);
+      console.log("mail error=>", error);
+    }
+
     res.json(order);
   } catch (error) {
     console.log(error);
