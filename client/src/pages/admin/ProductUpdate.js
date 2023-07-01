@@ -34,7 +34,6 @@ const AdminProductUpdate = () => {
   const loadProduct = async () => {
     try {
       const { data } = await axios.get(`/product/${params.slug}`);
-      console.log("datataa", data);
       setName(data.name);
       setDescription(data.description);
       setPrice(data.price);

@@ -33,7 +33,6 @@ const UserCartSidebar = () => {
     let total = 0;
     cart.map((item) => {
       total += item.price;
-      console.log("tot", total);
     });
     return total.toLocaleString("en-US", {
       style: "currency",

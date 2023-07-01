@@ -314,18 +314,22 @@ export const orderStatus = async (req, res) => {
     const order = await Order.findByIdAndUpdate(
       orderId,
       { status },
-      { new: true }  //To return updated data
+      { new: true } //To return updated data
     ).populate("buyer", "email name");
 
     console.log("===>", order);
 
     //Send Email
     const message = `
-<h2>Hello ${order.buyer.name}</h2>
-<p>Your order's status is: <span style='color:red'>${order.status}</span> </p>
-<p>Visit <a href=${process.env.FRONTEND_URL}/dashboard/user/orders>your dashboard</a> for more details </p>
-<p>Regards ...</p>
-<p>***RAYEN DEV COMMUNITY***</p>
+    <h2>Hello ${order.buyer.name}</h2>
+    <p>We hope this email finds you well and that you're enjoying a wonderful day. We wanted to take a moment to express our sincere gratitude for choosing our book store and for placing an order with us. Your support means the world to us!</p>
+     <br />
+    <hr />
+    <p>Your order's status is: <span style='color:red'>${order.status}</span></p>
+    <p>Visit <a href=${process.env.FRONTEND_URL}/dashboard/user/orders>your dashboard</a> for more details </p>
+    <p>Best regards,</p>
+    <hr />
+    <p>***RAYEN DEV COMMUNITY***</p>
 `;
 
     const subject = "Order status";
@@ -334,7 +338,9 @@ export const orderStatus = async (req, res) => {
 
     try {
       await sendEmail(subject, message, send_to, send_from);
-      res.status(200).json({ success: true, message: "Email Sent", user: order.buyer.name});
+      res
+        .status(200)
+        .json({ success: true, message: "Email Sent", user: order.buyer.name });
     } catch (error) {
       res.status(500);
       // throw new Error("Email not sent, please try again",error);

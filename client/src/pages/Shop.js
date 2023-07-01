@@ -21,7 +21,6 @@ const Shop = () => {
         checked,
         radio,
       });
-      console.log("filtered prod==>", data);
       setProducts(data);
     } catch (error) {
       console.log(error);
