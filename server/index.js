@@ -18,7 +18,13 @@ mongoose
   .catch((err) => console.log("DB error=>", err));
 
 //middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    //Enable sending credentials (back => front)
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(express.json());
