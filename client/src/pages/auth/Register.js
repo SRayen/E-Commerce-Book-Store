@@ -61,7 +61,7 @@ const Register = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                autoFocus
+                
               />
 
               <input
@@ -70,7 +70,7 @@ const Register = () => {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                autoFocus
+                
               />
 
               <button className="btn btn-primary" type="submit">

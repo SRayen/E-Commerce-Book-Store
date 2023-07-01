@@ -61,7 +61,7 @@ const Login = () => {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                autoFocus
+                
               />
 
               <button className="btn btn-primary" type="submit">
