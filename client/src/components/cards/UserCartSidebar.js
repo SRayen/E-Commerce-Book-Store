@@ -41,6 +41,11 @@ const UserCartSidebar = () => {
   };
 
   const handleBuy = async () => {
+    if (!auth?.user?.address) {
+      toast.error("Please add the delivery address");
+      return;
+    }
+
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
@@ -125,7 +130,7 @@ const UserCartSidebar = () => {
             <button
               onClick={handleBuy}
               className="btn btn-primary col-12 mt-2"
-              disabled={!auth?.user?.address || !instance || loading}
+              disabled={!instance || loading}
             >
               {loading ? "Processing..." : "Buy"}
             </button>
