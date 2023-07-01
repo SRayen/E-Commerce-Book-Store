@@ -105,7 +105,7 @@ const AdminOrders = () => {
                           {order?.payment?.success ? "Success" : "Failed"}
                         </td>
                         <td>{order?.products?.length} products </td>
-                        <td>{order.payment.transaction?.amountRequested}</td>
+                        <td>{order.payment.transaction?.amountRequested} $</td>
                       </tr>
                     </tbody>
                   </table>

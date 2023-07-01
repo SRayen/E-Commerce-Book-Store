@@ -13,6 +13,7 @@ const UserOrders = () => {
 
   useEffect(() => {
     if (auth?.token) getOrders();
+
   }, [auth?.token]);
 
   const getOrders = async () => {
@@ -23,6 +24,8 @@ const UserOrders = () => {
       console.log(error);
     }
   };
+
+  console.log('orders==>',orders)
 
   return (
     <>
@@ -49,6 +52,7 @@ const UserOrders = () => {
                         <th scope="col">Ordered</th>
                         <th scope="col">Payment</th>
                         <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -61,6 +65,7 @@ const UserOrders = () => {
                           {order?.payment?.success ? "Success" : "Failed"}
                         </td>
                         <td>{order?.products?.length} products </td>
+                        <td>{order?.payment?.transaction?.amount} $</td>
                       </tr>
                     </tbody>
                   </table>
