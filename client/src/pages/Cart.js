@@ -14,7 +14,6 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-
   return (
     <>
       <Jumbotron

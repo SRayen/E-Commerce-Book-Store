@@ -65,7 +65,7 @@ const Shop = () => {
 
   return (
     <>
-      <Jumbotron title="Hello World" />;
+      <Jumbotron title="Hello World" />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">

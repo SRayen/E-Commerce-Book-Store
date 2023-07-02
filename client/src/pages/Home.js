@@ -53,12 +53,12 @@ const Home = () => {
   const arr = [...products];
   const sortedBySold = arr?.sort((a, b) => (a.sold < b.sold ? 1 : -1));
   return (
-    <div>
+    <div className="mx-1">
       <Jumbotron title="Hello" />
 
       <div className="row">
         <div className="col-md-6">
-          <h2 className="p-3 mt-2 mb-2 h4 bg-light text-center">
+          <h2 className="p-3 mt-2 mb-2 h4 bg-dark text-center text-info rounded-5">
             New Arrivals
           </h2>
 
@@ -71,7 +71,7 @@ const Home = () => {
           </div>
         </div>
         <div className="col-md-6">
-          <h2 className="p-3 mt-2 mb-2 h4 bg-light text-center">
+          <h2 className="p-3 mt-2 mb-2 h4 bg-dark text-center text-danger rounded-5">
             Best Sellers
           </h2>
           <div className="row">
