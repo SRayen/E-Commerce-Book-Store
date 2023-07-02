@@ -72,9 +72,13 @@ const AdminOrders = () => {
                         <th scope="col">Status</th>
                         <th scope="col">Buyer</th>
                         <th scope="col">Ordered</th>
-                        <th scope="col">Payment</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
+                        <th scope="col" className="d-none d-md-table-cell">Payment</th>
+                        <th scope="col" className="d-none d-md-table-cell">
+                          Quantity
+                        </th>
+                        <th scope="col" className="d-none d-md-table-cell">
+                          Total
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -101,11 +105,15 @@ const AdminOrders = () => {
                         </td>
                         <td>{order?.buyer?.name}</td>
                         <td>{moment(order.createdAt).fromNow()}</td>
-                        <td>
+                        <td className="d-none d-md-table-cell">
                           {order?.payment?.success ? "Success" : "Failed"}
                         </td>
-                        <td>{order?.products?.length} products </td>
-                        <td>{order.payment.transaction?.amountRequested} $</td>
+                        <td className="d-none d-md-table-cell">
+                          {order?.products?.length} products{" "}
+                        </td>
+                        <td className="d-none d-md-table-cell">
+                          {order.payment.transaction?.amountRequested} $
+                        </td>
                       </tr>
                     </tbody>
                   </table>

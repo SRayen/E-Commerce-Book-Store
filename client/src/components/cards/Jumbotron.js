@@ -1,6 +1,6 @@
 import React from "react";
 
-const Jumbotron = ({ title, subtitle = "Welcome To React E-Commerce" }) => {
+const Jumbotron = ({ title, subtitle = "Welcome to Rayen's Online Bookstore: Unlock the World of Technology and Knowledge" }) => {
   return (
     <div
       className="container-fluid jumbotron"

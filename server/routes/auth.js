@@ -5,7 +5,6 @@ const router = express.Router();
 import {
   register,
   login,
-  secret,
   updateProfile,
   getOrders,
   allOrders,

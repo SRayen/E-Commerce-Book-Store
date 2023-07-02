@@ -51,8 +51,8 @@ const UserOrders = () => {
                         <th scope="col">Buyer</th>
                         <th scope="col">Ordered</th>
                         <th scope="col">Payment</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
+                        <th scope="col" className="d-none d-md-table-cell">Quantity</th>
+                        <th scope="col" className="d-none d-md-table-cell">Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -64,8 +64,8 @@ const UserOrders = () => {
                         <td>
                           {order?.payment?.success ? "Success" : "Failed"}
                         </td>
-                        <td>{order?.products?.length} products </td>
-                        <td>{order?.payment?.transaction?.amount} $</td>
+                        <td className="d-none d-md-table-cell">{order?.products?.length} products </td>
+                        <td className="d-none d-md-table-cell">{order?.payment?.transaction?.amount} $</td>
                       </tr>
                     </tbody>
                   </table>

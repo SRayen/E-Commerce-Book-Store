@@ -21,7 +21,7 @@ const Menu = () => {
   };
   return (
     <>
-      <ul className="nav d-flex justify-content-between shadow-sm mb-2 sticky-top bg-light">
+      <ul className="nav d-flex justify-content-center justify-content-md-between shadow-sm mb-2 sticky-top bg-light mx-2">
         <li className="nav-item">
           <NavLink className="nav-link " aria-current="page" to="/">
             HOME
@@ -70,7 +70,7 @@ const Menu = () => {
           </Badge>
         </li>
 
-        <Search />
+        <Search className="w-auto" />
 
         {!auth?.user ? (
           <>
