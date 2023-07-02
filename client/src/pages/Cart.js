@@ -21,9 +21,7 @@ const Cart = () => {
         title={`Hello ${auth?.token && auth?.user?.name}`}
         subtitle={
           cart?.length > 0
-            ? `You have ${cart?.length} items in the cart. ${
-                auth?.token ? "" : "Please login to checkout"
-              }`
+            ? `${cart?.length} items in your cart.`
             : "Your cart is empty"
         }
       />
