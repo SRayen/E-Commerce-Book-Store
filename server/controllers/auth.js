@@ -86,10 +86,6 @@ export const login = async (req, res) => {
   }
 };
 
-export const secret = async (req, res) => {
-  res.json({ curerntUser: req.user });
-};
-
 export const updateProfile = async (req, res) => {
   try {
     const { name, password, address } = req.body;
