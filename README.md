@@ -14,15 +14,15 @@
   * Render
   
  ## Screenshots:
-  ### Home:
+  ### <ins>Home</ins>:
 ![Home](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/8ffd31a3-d648-4228-8878-32fcb2d3b082)
-### User Dashboard:
+### <ins>User Dashboard</ins>:
 ![user Dashboard](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/0ae38bc2-7c8b-4151-ba35-0b0ae8324070)
-### User Cart:
+### <ins>User Cart</ins>:
 ![cart](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/e647b9d6-fa22-449b-9503-01bc218596c2)
-### Order Status Email:
+### <ins>Order Status Email</ins>:
 ![email](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/02a63378-ed22-495b-adb9-408dfde10de8)
-### Admin Dashboard:
+### <ins>Admin Dashboard</ins>:
 ![Admin Dashboard](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/7373f52d-5064-46e9-a75b-59788f36b0ab)
 
 
