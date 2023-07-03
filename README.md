@@ -14,16 +14,16 @@
   * Render
   
  ## Screenshots:
-  ### Dashboard:
-![dashboard](https://github.com/SRayen/pinvent-mern-app/assets/13922445/d2ca00e1-5da1-4236-b390-39a8850bfcf7)
-### EditProfile:
-![editProfile](https://github.com/SRayen/pinvent-mern-app/assets/13922445/b9bd914e-2549-4868-a12f-ba68ebbef4b2)
-### ReportBug:
-![reportBug](https://github.com/SRayen/pinvent-mern-app/assets/13922445/d084d149-1d28-4361-82c8-b878b7313f66)
-### ProductDetail:
-![productDetail](https://github.com/SRayen/pinvent-mern-app/assets/13922445/85dd999f-ff49-40ec-be19-c49e5a67e13f)
-### ReduxDevTools:
-![ReduxDevTools](https://github.com/SRayen/pinvent-mern-app/assets/13922445/debccd97-4565-4456-8d07-a39192688c39)
+  ### Home:
+![Home](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/8ffd31a3-d648-4228-8878-32fcb2d3b082)
+### User Dashboard:
+![user Dashboard](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/0ae38bc2-7c8b-4151-ba35-0b0ae8324070)
+### User Cart:
+![cart](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/e647b9d6-fa22-449b-9503-01bc218596c2)
+### Order Status Email:
+![email](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/02a63378-ed22-495b-adb9-408dfde10de8)
+### Admin Dashboard:
+![Admin Dashboard](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/7373f52d-5064-46e9-a75b-59788f36b0ab)
 
 
 
