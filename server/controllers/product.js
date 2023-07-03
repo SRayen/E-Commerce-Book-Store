@@ -352,3 +352,28 @@ export const orderStatus = async (req, res) => {
     console.log(error);
   }
 };
+
+export const getOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({ buyer: req.user._id })
+      .populate("products", "-photo") // Populating the "products" field of orders, excluding the "photo" field
+      .populate("buyer", "name"); // Populating the "buyer" field of orders, including only the "name" field
+
+    res.json(orders);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const allOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({})
+      .populate("products", "-photo") // Populating the "products" field of orders, excluding the "photo" field
+      .populate("buyer", "name") // Populating the "buyer" field of orders, including only the "name" field
+      .sort({ createdAt: "-1" });
+    res.json(orders);
+  } catch (err) {
+    console.log(err);
+  }
+};
+

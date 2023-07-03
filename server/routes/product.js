@@ -21,6 +21,8 @@ import {
   getToken,
   processPayment,
   orderStatus,
+  getOrders,
+  allOrders,
 } from "../controllers/product.js";
 //formidable() middleware ==> to receive form data (and receive file (img) data)
 router.post("/product", requireSignin, isAdmin, formidable(), create);
@@ -39,4 +41,10 @@ router.get("/related-products/:productId/:categoryId", relatedProducts);
 router.get("/braintree/token", getToken);
 router.post("/braintree/payment", requireSignin, processPayment);
 router.put("/order-status/:orderId", requireSignin, isAdmin, orderStatus);
+
+// orders
+router.get("/orders", requireSignin, getOrders);
+router.get("/all-orders", requireSignin, isAdmin, allOrders);
+
+
 export default router;
