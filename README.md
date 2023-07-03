@@ -27,7 +27,7 @@
 |-|
 
 ### <ins>Order Status Email</ins>:
-| ![email](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/02a63378-ed22-495b-adb9-408dfde10de8) |
+| ![email](https://github.com/SRayen/E-Commerce-Book-Store/assets/13922445/9b5f1662-0ac2-49d9-b6cf-db4d10e53d7b) |
 |-|
 
 ### <ins>Admin Dashboard</ins>:
