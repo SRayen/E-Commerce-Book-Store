@@ -66,8 +66,8 @@ const Home = () => {
             New Arrivals
           </h2>
 
-          {loading ? (
-            <img src={loadIcon} alt="loading" />
+          {true ? (
+            <img src={loadIcon} alt="loading" style={{width:'100%'}} />
           ) : (
             <div className="row">
               {products?.map((p) => (
@@ -84,7 +84,7 @@ const Home = () => {
           </h2>
 
           {loading ? (
-            <img src={loadIcon} alt="loading" />
+            <img src={loadIcon} alt="loading" style={{width:'100%'}} />
           ) : (
             <div className="row">
               {sortedBySold?.map((p) => (
