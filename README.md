@@ -15,8 +15,8 @@
 ## Deployment : 
   * Render
 
- * ## Docker Pull Commands : 
-    **Client:** docker pull srayen/server-ecommerce-book
+ ## Docker Pull Commands : 
+   **Client:** docker pull srayen/server-ecommerce-book
 
    **Server:** docker pull srayen/client-ecommerce-book
   
