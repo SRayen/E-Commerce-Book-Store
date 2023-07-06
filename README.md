@@ -8,7 +8,7 @@
 
 **Client:** React, Bootstrap , Ant Design , Axios ,Braintree 
 
-**Server:** Express.js , Bcryptjs , Jsonwebtoken , express-formidable , , Nodemailer , MongoDB Atlas Database
+**Server:** Express.js , Bcryptjs , Jsonwebtoken , express-formidable , Nodemailer , MongoDB Atlas Database
 
 **Containerization :** Docker
 
