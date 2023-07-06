@@ -10,6 +10,8 @@
 
 **Server:** Express.js , Bcryptjs , Jsonwebtoken , express-formidable , , Nodemailer , MongoDB Atlas Database
 
+**Containerization :** Docker
+
 ## Deployment : 
   * Render
   
