@@ -66,7 +66,7 @@ const Home = () => {
             New Arrivals
           </h2>
 
-          {true ? (
+          {loading ? (
             <img src={loadIcon} alt="loading" style={{width:'100%'}} />
           ) : (
             <div className="row">
