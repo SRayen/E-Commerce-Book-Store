@@ -6,7 +6,7 @@
  Discover our user-friendly Online Bookstore, where you can effortlessly explore, purchase, and track your favorite books. Browse diverse categories, adjust quantities, and enjoy a seamless checkout process. After successful payment, receive order status updates via email. Our application also empowers administrators, providing easy book management and sales history tracking...
 ## Tech Stack :
 
-**Client:** React, Bootstrap , Ant Design , Axios ,Braintree 
+**Client:** React, Bootstrap , Ant Design , Axios ,Braintree, Moment.js 
 
 **Server:** Express.js , Bcryptjs , Jsonwebtoken , express-formidable , Nodemailer , MongoDB Atlas Database
 
